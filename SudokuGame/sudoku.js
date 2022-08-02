@@ -81,5 +81,18 @@ function selectTile() {
             return; //just cancel the execution
         }
         this.innerText = numSelected.id;
+        
+
+        let coords = this.id.split('-');
+        let r = parseInt(coords[0]);
+        let c = parseInt(coords[1]);
+
+        // Check Solution
+        if(solution[r][c] == numSelected.id) {
+            this.innerText = numSelected.id;
+        } else {
+            errors+=1;
+            document.getElementById('errors').innerText = errors;
+        }
     }
 }
