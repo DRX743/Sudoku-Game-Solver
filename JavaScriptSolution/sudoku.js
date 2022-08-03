@@ -43,3 +43,23 @@ function solved(board){
     }
     return true
 }
+
+
+function nextBoards(board){ 
+    // Board -> List[Board]
+    // finds the first emply square and generates 9 different boards filling in that square with numbers 1...9
+    var res = []
+    const firstEmpty = findEmptySquare(board)
+    if (firstEmpty != undefined){
+        const y = firstEmpty[0]
+        const x = firstEmpty[1]
+        for (var i = 1; i <= 9; i++){
+            var newBoard = [...board]
+            var row = [...newBoard[y]]
+            row[x] = i
+            newBoard[y] = row
+            res.push(newBoard)
+        }
+    }
+    return res
+}
