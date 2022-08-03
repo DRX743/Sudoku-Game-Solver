@@ -44,7 +44,7 @@ var bd4 = [ [1, 2, 3, 4, 5, 6, 7, 8, b],
             [b, b, b, b, b, b, b, b, 9]]
 
 // Main solving function
-function solver(board) {
+function solve(board) {
     if (solved(board)) {
         return board //If already solved return that Board
     } else { 
@@ -198,3 +198,7 @@ function boxesGood(board){
     }
     return true
 }
+
+// 1st Test
+// console.log(solve(bd1));
+console.log(solve(bd3));
