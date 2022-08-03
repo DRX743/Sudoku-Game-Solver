@@ -16,6 +16,23 @@ public class SudokuSolver {
             { 0, 0, 8, 5, 0, 0, 0, 1, 0 },
             { 0, 9, 0, 0, 0, 0, 4, 0, 0 } 
             };
+
+        if(solveBoard(board)) {
+            System.out.println("Solved successfully !!!");
+        } else {
+            System.out.println("Unsolved Board !!");
+        }
+
+        printBoard(board);
+    }
+
+    private static void printBoard(int[][] board) {
+        for(int row = 0; row < GRID_SIZE; row++) {
+            for(int column = 0; column < GRID_SIZE; column++) {
+                System.out.print(board[row][column]);
+            }
+            System.out.println();
+        }
     }
 
     
