@@ -16,6 +16,8 @@ public class SudokuSolver {
             { 0, 0, 8, 5, 0, 0, 0, 1, 0 },
             { 0, 9, 0, 0, 0, 0, 4, 0, 0 } 
             };
+        
+        // See the board before solving it
 
         if(solveBoard(board)) {
             System.out.println("Solved successfully !!!");
@@ -23,12 +25,21 @@ public class SudokuSolver {
             System.out.println("Unsolved Board !!");
         }
 
+        // The board solved
+
         printBoard(board);
     }
 
     private static void printBoard(int[][] board) {
         for(int row = 0; row < GRID_SIZE; row++) {
+            //Add dashes
+            if(row % 3 == 0 && row != 0) {
+                System.out.println("------------");
+            }
             for(int column = 0; column < GRID_SIZE; column++) {
+                if(column % 3 == 0 && column != 0) {
+                System.out.println("|");
+            }
                 System.out.print(board[row][column]);
             }
             System.out.println();
