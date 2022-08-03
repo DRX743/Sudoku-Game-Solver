@@ -75,3 +75,83 @@ function findEmptySquare(board){
         }
     }
 }
+
+
+function keepOnlyValid(boards){
+    // List[Board] -> List[Board]
+    // filters out all of the invalid boards from the list
+    var res = []
+    for (var i = 0; i < boards.length; i++){
+        if (validBoard(boards[i])){
+            res.push(boards[i])
+        }
+    }
+    return res
+}
+
+function validBoard(board){
+    // Board -> Boolean
+    // checks to see if given board is valid
+    return rowsGood(board) && columnsGood(board) && boxesGood(board)
+}
+
+function rowsGood(board){
+    // Board -> Boolean
+    // makes sure there are no repeating numbers for each row
+    for (var i = 0; i < 9; i++){
+        var cur = []
+        for (var j = 0; j < 9; j++){
+            if (cur.includes(board[i][j])){
+                return false
+            }
+            else if (board[i][j] != null){
+                cur.push(board[i][j])
+            }
+        }
+    }
+    return true
+}
+
+function columnsGood(board){
+    // Board -> Boolean
+    // makes sure there are no repeating numbers for each column
+    for (var i = 0; i < 9; i++){
+        var cur = []
+        for (var j = 0; j < 9; j++){
+            if (cur.includes(board[j][i])){
+                return false
+            }
+            else if (board[j][i] != null){
+                cur.push(board[j][i])
+            }
+        }
+    }
+    return true
+}
+
+function boxesGood(board){
+    // transform this everywhere to update res
+    const boxCoordinates = [[0, 0], [0, 1], [0, 2],
+                            [1, 0], [1, 1], [1, 2],
+                            [2, 0], [2, 1], [2, 2]]
+    // Board -> Boolean
+    // makes sure there are no repeating numbers for each box
+    for (var y = 0; y < 9; y += 3){
+        for (var x = 0; x < 9; x += 3){
+            // each traversal should examine each box
+            var cur = []
+            for (var i = 0; i < 9; i++){
+                var coordinates = [...boxCoordinates[i]]
+                coordinates[0] += y
+                coordinates[1] += x
+                if (cur.includes(board[coordinates[0]][coordinates[1]])){
+                    return false
+                }
+                else if (board[coordinates[0]][coordinates[1]] != null){
+                    cur.push(board[coordinates[0]][coordinates[1]])
+                }
+            }
+        }
+    }
+    return true
+}
