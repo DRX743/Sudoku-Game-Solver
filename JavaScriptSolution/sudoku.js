@@ -63,3 +63,15 @@ function nextBoards(board){
     }
     return res
 }
+
+function findEmptySquare(board){
+    // Board -> [Int, Int] 
+    // (get the i j coordinates for the first empty square)
+    for (var i = 0; i < 9; i++){
+        for (var j = 0; j < 9; j++){
+            if (board[i][j] == null) {
+                return [i, j]
+            }
+        }
+    }
+}
