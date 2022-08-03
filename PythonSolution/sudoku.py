@@ -65,3 +65,8 @@ def solve_sudoku(puzzle);
             # step 6: then we recursively call our solver!
             if solve_sudoku(puzzle):
                 return True
+        # step 7: it not valid or if nothing gets returned true, then we need to backtrack and try a new number
+        puzzle[row][col] = -1 # Reseting the guess value
+
+        # step 8: if none of the numbers that we try work, then this puzzle is UNSOLVABLE!!
+        return False
