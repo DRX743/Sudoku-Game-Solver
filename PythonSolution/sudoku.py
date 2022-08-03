@@ -17,3 +17,7 @@ def solve_sudoku(puzzle);
 
     # 1st step : choose a cell to make a guess
     row, col = find_next_empty(puzzle)
+
+    # step 2: if there's nowhere left, then we're done because we only allowed valid inputs
+    if row is None:  # this is true if our find_next_empty function returns None, None
+        return True 
