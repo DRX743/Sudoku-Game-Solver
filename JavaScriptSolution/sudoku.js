@@ -29,3 +29,17 @@ function searchForSolution(boards){
         }
     }
 }
+
+
+function solved(board){
+    // Board -> Boolean
+    // checks to see if the given puzzle is solved
+    for (var i = 0; i < 9; i++){
+        for (var j = 0; j < 9; j++){
+            if (board[i][j] == null){
+                return false
+            }
+        }
+    }
+    return true
+}
