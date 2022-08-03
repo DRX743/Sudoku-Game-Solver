@@ -1,7 +1,8 @@
+from pprint import pprint
 # Solve the sudoku puzzle using backtracking algo
 # the puzzle itself it's a list of lists, where each one is a row in the puzzle
 
-def find_next_empty(puzzle);
+def find_next_empty(puzzle):
 # finds the next row, col on the puzzle that's still empty --> rep with -1
     # return row, col tuple (or (None, None) if there is none)
 
@@ -46,7 +47,7 @@ def is_valid(puzzle, guess, row, col):
     return True
 
 
-def solve_sudoku(puzzle);
+def solve_sudoku(puzzle):
 
     # 1st step : choose a cell to make a guess
     row, col = find_next_empty(puzzle)
@@ -70,3 +71,21 @@ def solve_sudoku(puzzle);
 
         # step 8: if none of the numbers that we try work, then this puzzle is UNSOLVABLE!!
         return False
+
+# Testing purposes
+if __name__ == '__main__':
+    example_board = [
+        [3, 9, -1,   -1, 5, -1,   -1, -1, -1],
+        [-1, -1, -1,   2, -1, -1,   -1, -1, 5],
+        [-1, -1, -1,   7, 1, 9,   -1, 8, -1],
+
+        [-1, 5, -1,   -1, 6, 8,   -1, -1, -1],
+        [2, -1, 6,   -1, -1, 3,   -1, -1, -1],
+        [-1, -1, -1,   -1, -1, -1,   -1, -1, 4],
+
+        [5, -1, -1,   -1, -1, -1,   -1, -1, -1],
+        [6, 7, -1,   1, -1, 5,   -1, 4, -1],
+        [1, -1, 9,   -1, -1, -1,   2, -1, -1]
+    ]
+    print(solve_sudoku(example_board))
+    pprint(example_board)
